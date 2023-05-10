@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        img{
+            width: 200px;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            background-image: url(img/images.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        #container{
+            /* border: 1px solid; */
+            width: 350px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0.8;
+        }
+
+        .linha{
+            border: 1px solid;
+            align-self: center;
+            width: 60%;
+            height: 65px;
+            /* background-color: red; */
+        }
+
+        .top{
+            border: 1px solid;
+            align-self: center;
+            width: 42%;
+            height: 25px;
+            background: black;
+            border-radius: 8px 8px 0px 0px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <div class="top"></div>
+        <div style="border-radius: 8px 8px 0px 0px;" class="linha"></div>
+        <div class="linha"></div>
+        <div class="linha"></div>
+        <div class="linha"></div>
+        <div class="linha"></div>
+    </div>
+
+    <script>
+        const linhas = document.querySelectorAll('#container .linha');
+        // for(let i=linhas.length-1, lineNumber=1; i>=0; i--, lineNumber++){
+        //     console.log(`linha ${lineNumber}: ${linhas[i]}`)
+        // }
+
+        let c = 0;
+        const interval = setInterval(() => {
+
+        linhas.forEach((linha, i) => {
+            const delay = linhas.length - 1 - i;
+            const normal = linhas.length + 1 + i;
+            setTimeout(() => {
+                linha.style.background = 'rgb(22, 179, 38)';
+                setTimeout(() => {
+                    linha.style.background = 'white';
+                }, normal * 370);
+            }, delay * 200);
+        });
+        c++;
+        console.log(c)
+
+        if (c === 10) clearInterval(interval);
+        }, 2000);
+
+        
+    </script>
+</body>
+</html>
